@@ -43,6 +43,7 @@ def random_set_of_mean(counter):
 #function to plot the mean on the graph
 def show_fig(mean_list):
     df = mean_list
+    mean = statistics.mean(df)
     fig = ff.create_distplot([df], ["temp"], show_hist=False)
     fig.add_trace(go.Scatter(x=[mean, mean], y=[0, 1], mode="lines", name="MEAN"))
     fig.show()
@@ -55,7 +56,9 @@ def setup():
         set_of_means= random_set_of_mean(100)
         mean_list.append(set_of_means)
     show_fig(mean_list)
-
+    
+    mean = statistics.mean(mean_list)
+    print("Mean of sampling distribution :-",mean )
 
 setup()
 
@@ -63,8 +66,7 @@ setup()
 #Code to find the mean of the raw data ("population data")
 population_mean = statistics.mean(data)
 print("population mean:- ", population_mean)
-mean = statistics.mean(mean_list)
-print("Mean of sampling distribution :-",mean )
+
 
 # code to find the standard deviation of the sample data
 def standard_deviation():
